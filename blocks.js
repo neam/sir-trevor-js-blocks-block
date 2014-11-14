@@ -23,7 +23,7 @@ SirTrevor.Blocks.Blocks = (function () {
         toData: function () {
             var self = this;
             var column_config = this.columns_presets[this.columns_preset];
-            var dataObj = { blocks: [] };
+            var dataObj = { children: [] };
 
             this.getColumns().each(function (i) {
                 var blocksData = [];
@@ -32,7 +32,7 @@ SirTrevor.Blocks.Blocks = (function () {
                     blocksData.push(block.saveAndReturnData());
                 });
 
-                dataObj.blocks = blocksData;
+                dataObj.children = blocksData;
             });
 
             this.setData(dataObj);
@@ -41,10 +41,10 @@ SirTrevor.Blocks.Blocks = (function () {
         loadData: function (data) {
             this.applyColumns('blocks', true);
 
-            var blocks = (data.blocks || []);
+            var children = (data.children || []);
             var $block = null;
-            for (var j = 0; j < blocks.length; j++) {
-                var block = blocks[j];
+            for (var j = 0; j < children.length; j++) {
+                var block = children[j];
                 $block = this.sirTrevor.createBlock(block.type, block.data, $block ? $block.$el : $column.children('.st-block-controls__top'));
             }
         }
