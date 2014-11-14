@@ -43,6 +43,7 @@ SirTrevor.Blocks.Blocks = (function () {
 
             var children = (data.children || []);
             var $block = null;
+            var $column = this.getColumn(0);
             for (var j = 0; j < children.length; j++) {
                 var block = children[j];
                 $block = this.sirTrevor.createBlock(block.type, block.data, $block ? $block.$el : $column.children('.st-block-controls__top'));
