@@ -8,6 +8,9 @@ SirTrevor.Blocks.Blocks = (function () {
         },
         icon_name: 'columns',
 
+        // Used as key in the stored data for the the list of sub-elements
+        list_data_key: 'children',
+
         columns_presets: {
             'blocks': [12] // One single level
         },
@@ -23,7 +26,8 @@ SirTrevor.Blocks.Blocks = (function () {
         toData: function () {
             var self = this;
             var column_config = this.columns_presets[this.columns_preset];
-            var dataObj = { children: [] };
+            var dataObj = {};
+            dataObj[self.list_data_key] = [];
 
             this.getColumns().each(function (i) {
                 var blocksData = [];
@@ -32,7 +36,7 @@ SirTrevor.Blocks.Blocks = (function () {
                     blocksData.push(block.saveAndReturnData());
                 });
 
-                dataObj.children = blocksData;
+                dataObj[self.list_data_key] = blocksData;
             });
 
             this.setData(dataObj);
@@ -41,7 +45,7 @@ SirTrevor.Blocks.Blocks = (function () {
         loadData: function (data) {
             this.applyColumns('blocks', true);
 
-            var children = (data.children || []);
+            var children = (dataObj[self.list_data_key] || []);
             var $block = null;
             var $column = this.getColumn(0);
             for (var j = 0; j < children.length; j++) {
