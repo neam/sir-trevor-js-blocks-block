@@ -9,7 +9,7 @@ SirTrevor.Blocks.Blocks = (function () {
         icon_name: 'columns',
 
         // Used as key in the stored data for the the list of sub-elements
-        list_data_key: 'children',
+        list_data_key: 'blocks',
 
         columns_presets: {
             'blocks': [12] // One single level
