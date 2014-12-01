@@ -42,9 +42,10 @@ SirTrevor.Blocks.Blocks = (function () {
             this.setData(dataObj);
         },
 
-        loadData: function (data) {
+        loadData: function (dataObj) {
             this.applyColumns('blocks', true);
 
+            var self = this;
             var children = (dataObj[self.list_data_key] || []);
             var $block = null;
             var $column = this.getColumn(0);
