@@ -8,6 +8,9 @@ SirTrevor.Blocks.Blocks = (function () {
         },
         icon_name: 'columns',
 
+        // This block is supposed to be extended before being actually included in the toolbar - make sure that extended blocks set this property to "true"
+        toolbarEnabled: false,
+
         // Used as key in the stored data for the the list of sub-elements
         list_data_key: 'blocks',
 
